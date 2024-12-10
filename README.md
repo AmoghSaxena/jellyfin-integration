@@ -18,36 +18,27 @@ This project sets up a media server using Jellyfin, integrated with Jellyseerr, 
 
 2. **Create a `.env` file:**
 
-    Create a `.env` file in the root directory of the project and add the following content:
+    There are two ways to create the `.env` file:
 
-    ```env
-    # ENV file for docker-compose.yml
+    **Method 1: Copy and Edit Manually**
 
-    PUID=0
-    PGID=0
-    TZ=Etc/UTC
+    Copy the `sample_env.env` file to `.env` and edit the content manually:
 
-    # Ports
-    RADARR_PORT=8925
-    SONARR_PORT=8926
-    PROWLARR_PORT=8927
-    FLARESOLVERR_PORT=8928
-    QBITTORRENT_PORT=8929
-    JELLYSEER_PORT=8930
-    JELLYFIN_PORT=8096
-
-    # Volumes
-    RADARR_CONFIG=./jellyfin/radarr
-    SONARR_CONFIG=./jellyfin/sonarr
-    PROWLARR_CONFIG=./jellyfin/prowlarr
-    FLARESOLVERR_CONFIG=./jellyfin/flaresolverr
-    QBITTORRENT_CONFIG=./jellyfin/qBittorrent
-    JELLYSEER_CONFIG=./jellyfin/jellyseer
-    JELLYFIN_CONFIG=./jellyfin/jellyfin
-    MOVIES_VOLUME=./MountOneDrive/JellyfinData/movies
-    TVSERIES_VOLUME=./MountOneDrive/JellyfinData/tvseries
-    DOWNLOADS_VOLUME=./jellyfin/downloads
+    ```sh
+    cp sample_env.env .env
     ```
+
+    Open the `.env` file in a text editor and update the values as needed.
+
+    **Method 2: Use the Python Script**
+
+    If you have Python installed on your machine, you can use the provided script to create the `.env` file based on [sample_env.env](http://_vscodecontentref_/1):
+
+    ```sh
+    python script_to_create_env.py
+    ```
+
+    Follow the prompts to enter the values for each variable. The script will create the `.env` file with the provided values.
 
 3. **Run Docker Compose:**
 
@@ -55,7 +46,7 @@ This project sets up a media server using Jellyfin, integrated with Jellyseerr, 
     docker-compose up -d
     ```
 
-    This command will start all the services defined in the [docker-compose.yml](http://_vscodecontentref_/1) file.
+    This command will start all the services defined in the [docker-compose.yml](http://_vscodecontentref_/2) file.
 
 ## Services
 
@@ -70,7 +61,7 @@ This project sets up a media server using Jellyfin, integrated with Jellyseerr, 
 ## Accessing the Services
 
 - **Jellyfin**: `http://localhost:${JELLYFIN_PORT}`
-- **Jellyseerr**: `http://localhost:${JELLYSEER_PORT}`
+- **Jellyseerr**:`http://localhost:${JELLYSEER_PORT}`
 - **Sonarr**: `http://localhost:${SONARR_PORT}`
 - **Radarr**: `http://localhost:${RADARR_PORT}`
 - **Prowlarr**: `http://localhost:${PROWLARR_PORT}`
